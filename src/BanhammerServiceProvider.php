@@ -21,9 +21,7 @@ class BanhammerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        Ban::observe(BanObserver::class);
+        config('ban.model')::observe(BanObserver::class);
 
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('auth.banned', AuthBanned::class);
@@ -41,9 +39,9 @@ class BanhammerServiceProvider extends ServiceProvider
             ], 'banhammer-config');
 
             // Publishing migrations
-            // $this->publishes([
-            //     __DIR__.'/../database/migrations' => database_path('migrations'),
-            // ], 'banhammer-migrations');
+             $this->publishes([
+                 __DIR__.'/../database/migrations' => database_path('migrations'),
+             ], 'banhammer-migrations');
 
             // Registering package commands.
             $this->commands([

@@ -9,12 +9,12 @@ class Banhammer
 {
     public static function unbanExpired(): void
     {
-        Ban::expired()->delete();
+        config('ban.model')::expired()->delete();
         Cache::put('banned-ips', IP::banned()->pluck('ip')->toArray());
     }
 
     public static function clear(): void
     {
-        Ban::onlyTrashed()->forceDelete();
+        config('ban.model')::onlyTrashed()->forceDelete();
     }
 }
