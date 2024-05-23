@@ -55,12 +55,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/KieranLProctor/banhammer",
-            "no-api": true
-        }
-    ]
+    "prefer-stable": true
 }
