@@ -3,13 +3,10 @@
 namespace Mchev\Banhammer\Tests;
 
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-
-    use RefreshDatabase;
 
     protected function getEnvironmentSetUp($app): void
     {

@@ -2,6 +2,7 @@
 
 namespace Mchev\Banhammer\Tests\Unit;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Mchev\Banhammer\Exceptions\BanhammerException;
 use Mchev\Banhammer\IP;
@@ -10,6 +11,7 @@ use Mchev\Banhammer\Tests\TestCase;
 
 class IPBannedMiddlewareTest extends TestCase
 {
+    use RefreshDatabase;
 
     /** @test */
     public function it_blocks_the_banned_ip()
