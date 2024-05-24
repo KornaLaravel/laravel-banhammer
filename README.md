@@ -118,6 +118,11 @@ class User extends Authenticatable
 
 To use UUIDs make sure you publish and edit the migration files.
 
+```diff
+- $table->id();
++ $table->uuid('id');
+```
+
 You will then need to make a model that extends `Mchev\Banhammer\Models\Ban`:
 
 ```php
