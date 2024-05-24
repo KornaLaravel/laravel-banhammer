@@ -24,13 +24,14 @@ Banned models can have an expiration date and will be automatically unbanned usi
    - [Scheduler](#scheduler)
    - [Events](#events)
    - [Miscellaneous](#misc)
-6. [Testing](#testing)
-7. [Changelog](#changelog)
-8. [Roadmap / Todo](#roadmap--todo)
-9. [Contributing](#contributing)
-10. [Security Vulnerabilities](#security-vulnerabilities)
-11. [Credits](#credits)
-12. [License](#license)
+6. [UUIDs](#uuids)
+7. [Testing](#testing)
+8. [Changelog](#changelog)
+9. [Roadmap / Todo](#roadmap--todo)
+10. [Contributing](#contributing)
+11. [Security Vulnerabilities](#security-vulnerabilities)
+12. [Credits](#credits)
+13. [License](#license)
 
 ## Version Compatibility
 
@@ -48,9 +49,12 @@ You can install the package via composer:
 composer require mchev/banhammer
 ```
 
-Then run the migrations with:
+Then publish and run the migrations with:
+
+> To use UUIDs see [UUIDs](#uuids)
 
 ```bash
+php artisan vendor:publish --tag="banhammer-migrations"
 php artisan migrate
 ```
 
@@ -60,13 +64,7 @@ You can publish the config file with:
 php artisan vendor:publish --tag="banhammer-config"
 ```
 
-It is possible to define the table name and the fallback_url in the `config/ban.php` file.
-
-You can publish the migration files with:
-
-```bash
-php artisan vendor:publish --tag="banhammer-migrations"
-```
+It is possible to define the table name, the model and the fallback_url in the `config/ban.php` file.
 
 ## Upgrading To 2.0 from 1.x
 
@@ -113,50 +111,6 @@ class User extends Authenticatable
 }
 ```
 > You can add the Bannable trait on as many models as you want (Team, Group, User, etc.).
-
-## Using UUIDs
-
-To use UUIDs make sure you publish and edit the migration files.
-
-```diff
-- $table->id();
-+ $table->uuid('id');
-```
-
-You will then need to make a model that extends `Mchev\Banhammer\Models\Ban`:
-
-```php
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Mchev\Banhammer\Models\Ban as BanhammerBan;
-
-class Ban extends BanhammerBan
-{
-    use HasUuids;
-
-    protected $keyType = 'string';
-}
-```
-> Although most of the methods needed are already available from the base model, you can add any additional methods here.
-
-Finally update the published `ban.php` config file to load the model you have created:
-
-```diff
-    /*
-    |--------------------------------------------------------------------------
-    | Model Name
-    |--------------------------------------------------------------------------
-    |
-    | Specify the model which you want to use as your Ban model.
-    |
-    */
-
--   'model' => \Mchev\Banhammer\Models\Ban::class,
-+   'model' => \App\Models\YouBanClass::class,
-```
 
 ### Ban / Unban
 
@@ -385,6 +339,52 @@ Banhammer::clear();
 Or you can use the command:
 ```bash
 php artisan banhammer:clear
+```
+
+## UUIDs
+
+To use UUIDs make sure you publish and edit the migration files.
+
+```bash
+php artisan vendor:publish --tag="banhammer-migrations"
+```
+
+```diff
+- $table->id();
++ $table->uuid('id');
+```
+
+You will then need to make a model that extends `Mchev\Banhammer\Models\Ban`:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Mchev\Banhammer\Models\Ban as BanhammerBan;
+
+class Ban extends BanhammerBan
+{
+    use HasUuids;
+}
+```
+> Although most of the methods needed are already available from the base model, you can add any additional methods here.
+
+Finally update the published `ban.php` config file to load the model you have created:
+
+```diff
+    /*
+    |--------------------------------------------------------------------------
+    | Model Name
+    |--------------------------------------------------------------------------
+    |
+    | Specify the model which you want to use as your Ban model.
+    |
+    */
+
+-   'model' => \Mchev\Banhammer\Models\Ban::class,
++   'model' => \App\Models\YouBanClass::class,
 ```
 
 ## Testing
