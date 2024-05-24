@@ -13,8 +13,7 @@ Banned models can have an expiration date and will be automatically unbanned usi
 1. [Introduction](#banhammer-a-model-and-ip-ban-package-for-laravel)
 2. [Version Compatibility](#version-compatibility)
 3. [Installation](#installation)
-4. [Upgrading To 2.0 from 1.x](#upgrading-to-20-from-1x)
-5. [Usage](#usage)
+4. [Usage](#usage)
    - [Making a Model Bannable](#to-make-a-model-bannable-add-the-mchevbanhammertraitsbannable-trait-to-the-model)
    - [Ban / Unban](#ban--unban)
    - [IP](#ip)
@@ -24,7 +23,8 @@ Banned models can have an expiration date and will be automatically unbanned usi
    - [Scheduler](#scheduler)
    - [Events](#events)
    - [Miscellaneous](#misc)
-6. [UUIDs](#uuids)
+5. [UUIDs](#uuids)
+6. [Upgrading To 2.0 from 1.x](#upgrading-to-20-from-1x)
 7. [Testing](#testing)
 8. [Changelog](#changelog)
 9. [Roadmap / Todo](#roadmap--todo)
@@ -65,34 +65,6 @@ php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider"
 ```
 
 It is possible to define the table name, the model and the fallback_url in the `config/ban.php` file.
-
-## Upgrading To 2.0 from 1.x
-
-To upgrade to Banhammer version 2.0, follow these simple steps:
-
-1. Update the package version in your application's `composer.json` file:
-
-```json
-"require": {
-    "mchev/banhammer": "^2.0"
-}
-```
-
-2. Run the following command in your terminal:
-
-```bash
-composer update mchev/banhammer
-```
-
-3. Update the configuration
-
-    1. Update the configuration
-        - Backup your previous configuration file located at `config/ban.php`.
-        - Force republish the new configuration using the command: 
-        ```bash
-        php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="config" --force
-        ```
-        - Review the new configuration file and make any necessary edits.
 
 ## Usage
 
@@ -387,6 +359,34 @@ Finally update the published `ban.php` config file to load the model you have cr
 +   'model' => \App\Models\YouBanClass::class,
 ```
 
+## Upgrading To 2.0 from 1.x
+
+To upgrade to Banhammer version 2.0, follow these simple steps:
+
+1. Update the package version in your application's `composer.json` file:
+
+```json
+"require": {
+    "mchev/banhammer": "^2.0"
+}
+```
+
+2. Run the following command in your terminal:
+
+```bash
+composer update mchev/banhammer
+```
+
+3. Update the configuration
+
+    1. Update the configuration
+        - Backup your previous configuration file located at `config/ban.php`.
+        - Force republish the new configuration using the command: 
+        ```bash
+        php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="config" --force
+        ```
+        - Review the new configuration file and make any necessary edits.
+        
 ## Testing
 
 ```bash
