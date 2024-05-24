@@ -2,6 +2,10 @@
 
 All notable changes to `banhammer` will be documented in this file.
 
+## v2.3.0 - 2024-05-24
+
+- Added UUID support
+
 ## v2.2.0 - 2024-03-12
 
 - Laravel 11 support

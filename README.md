@@ -62,6 +62,12 @@ php artisan vendor:publish --tag="banhammer-config"
 
 It is possible to define the table name and the fallback_url in the `config/ban.php` file.
 
+You can publish the migration files with:
+
+```bash
+php artisan vendor:publish --tag="banhammer-migrations"
+```
+
 ## Upgrading To 2.0 from 1.x
 
 To upgrade to Banhammer version 2.0, follow these simple steps:
@@ -107,6 +113,45 @@ class User extends Authenticatable
 }
 ```
 > You can add the Bannable trait on as many models as you want (Team, Group, User, etc.).
+
+## Using UUIDs
+
+To use UUIDs make sure you publish and edit the migration files.
+
+You will then need to make a model that extends `Mchev\Banhammer\Models\Ban`:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Mchev\Banhammer\Models\Ban as BanhammerBan;
+
+class Ban extends BanhammerBan
+{
+    use HasUuids;
+
+    protected $keyType = 'string';
+}
+```
+> Although most of the methods needed are already available from the base model, you can add any additional methods here.
+
+Finally update the published `ban.php` config file to load the model you have created:
+
+```diff
+    /*
+    |--------------------------------------------------------------------------
+    | Model Name
+    |--------------------------------------------------------------------------
+    |
+    | Specify the model which you want to use as your Ban model.
+    |
+    */
+
+-   'model' => \Mchev\Banhammer\Models\Ban::class,
++   'model' => \App\Models\YouBanClass::class,
+```
 
 ### Ban / Unban
 
