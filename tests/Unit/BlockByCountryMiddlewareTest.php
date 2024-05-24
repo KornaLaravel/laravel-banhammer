@@ -2,9 +2,9 @@
 
 namespace Mchev\Banhammer\Tests\Unit;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mchev\Banhammer\Exceptions\BanhammerException;
 use Mchev\Banhammer\Middleware\BlockByCountry;
 use Mchev\Banhammer\Services\IpApiService;
@@ -13,7 +13,6 @@ use Mockery;
 
 class BlockByCountryMiddlewareTest extends TestCase
 {
-    
     use RefreshDatabase;
 
     /** @var BlockByCountry */

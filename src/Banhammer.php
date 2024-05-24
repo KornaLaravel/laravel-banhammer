@@ -3,7 +3,6 @@
 namespace Mchev\Banhammer;
 
 use Illuminate\Support\Facades\Cache;
-use Mchev\Banhammer\Models\Ban;
 
 class Banhammer
 {

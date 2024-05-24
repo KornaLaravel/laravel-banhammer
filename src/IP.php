@@ -4,11 +4,10 @@ namespace Mchev\Banhammer;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
-use Mchev\Banhammer\Models\Ban;
 
 class IP
 {
-    public static function ban(string|array $ips, array $metas = [], string $date = null): void
+    public static function ban(string|array $ips, array $metas = [], ?string $date = null): void
     {
         $bannedIps = self::getBannedIPsFromCache();
 

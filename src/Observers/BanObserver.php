@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Cache;
 use Mchev\Banhammer\Events\ModelWasBanned;
 use Mchev\Banhammer\Events\ModelWasUnbanned;
 use Mchev\Banhammer\IP;
-use Mchev\Banhammer\Models\Ban;
 
 class BanObserver
 {

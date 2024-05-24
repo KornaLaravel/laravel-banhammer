@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class BanhammerException extends HttpException
 {
-    public function __construct($message = null, Exception $previous = null, $code = 0)
+    public function __construct($message = null, ?Exception $previous = null, $code = 0)
     {
         parent::__construct(403, $message, $previous, [], $code);
     }
