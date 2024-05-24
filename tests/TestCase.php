@@ -28,8 +28,8 @@ abstract class TestCase extends Orchestra
     protected function setUp(): void
     {
         parent::setUp();
-        $this->loadMigrationsFrom(__DIR__ . '/migrations');
-        $this->loadMigrationsFrom(dirname(__DIR__) . '/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '../migrations');
+        $this->loadMigrationsFrom(dirname(__DIR__) . '../migrations');
     }
 
 }
