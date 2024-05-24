@@ -15,10 +15,8 @@ class BlockByCountryMiddlewareTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @var BlockByCountry */
     private $middleware;
 
-    /** @var IpApiService|\Mockery\MockInterface */
     private $ipApiService;
 
     protected function setUp(): void
