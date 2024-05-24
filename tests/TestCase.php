@@ -22,12 +22,9 @@ abstract class TestCase extends Orchestra
         ];
     }
 
-    /**
-     * Run package database migrations.
-     */
-    protected function setUp(): void
+    protected function defineDatabaseMigrations()
     {
-        parent::setUp();
+        $this->loadLaravelMigrations();
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }

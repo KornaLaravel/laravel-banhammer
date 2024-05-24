@@ -54,14 +54,14 @@ Then publish and run the migrations with:
 > To use UUIDs see [UUIDs](#uuids)
 
 ```bash
-php artisan vendor:publish --tag="banhammer-migrations"
+php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="banhammer-config"
+php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="config"
 ```
 
 It is possible to define the table name, the model and the fallback_url in the `config/ban.php` file.
@@ -90,7 +90,7 @@ composer update mchev/banhammer
         - Backup your previous configuration file located at `config/ban.php`.
         - Force republish the new configuration using the command: 
         ```bash
-        php artisan vendor:publish --tag="banhammer-config" --force
+        php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="config" --force
         ```
         - Review the new configuration file and make any necessary edits.
 
@@ -346,7 +346,7 @@ php artisan banhammer:clear
 To use UUIDs make sure you publish and edit the migration files.
 
 ```bash
-php artisan vendor:publish --tag="banhammer-migrations"
+php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="migrations"
 ```
 
 ```diff
