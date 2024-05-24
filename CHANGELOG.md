@@ -4,7 +4,8 @@ All notable changes to `banhammer` will be documented in this file.
 
 ## v2.3.0 - 2024-05-24
 
-- Added UUID support
+- Added UUID support @KieranLProctor
+- Added Configurable model support @KieranLProctor
 
 ## v2.2.0 - 2024-03-12
 
@@ -26,7 +27,7 @@ This new version introduce the block by country middleware
 
 ## v1.2.0 - 2023-03-02
 
-- Adding Metas (cutom properties) to bans.
+- Adding Metas (cutom properties) to bans. @mepsd
 - You may have to run `php artisan migrate` if you are upgrading from v1.1.x
 
 ## v1.1.5 - 2023-02-21

@@ -2,14 +2,12 @@
 
 namespace Mchev\Banhammer\Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mchev\Banhammer\IP;
 use Mchev\Banhammer\Models\Ban;
 use Mchev\Banhammer\Tests\TestCase;
 
 class IPBanTest extends TestCase
 {
-    use RefreshDatabase;
 
     public $ip = '127.0.0.1';
 

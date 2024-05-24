@@ -12,6 +12,7 @@ use Mockery;
 
 class BlockByCountryMiddlewareTest extends TestCase
 {
+
     /** @var BlockByCountry */
     private $middleware;
 

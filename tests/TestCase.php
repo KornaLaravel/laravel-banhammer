@@ -3,10 +3,14 @@
 namespace Mchev\Banhammer\Tests;
 
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
+
+    use RefreshDatabase;
+
     protected function getEnvironmentSetUp($app): void
     {
         // Load the .env file
@@ -28,9 +32,7 @@ abstract class TestCase extends Orchestra
     protected function setUp(): void
     {
         parent::setUp();
-        $this->loadMigrationsFrom([
-            '--path' => realpath(__DIR__.'/../database/migrations'),
-        ]);
+        $this->loadMigrationsFrom(database_path('migrations'));
     }
 
 }
