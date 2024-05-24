@@ -23,13 +23,14 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * run package database migrations.
+     * Run package database migrations.
      */
     protected function setUp(): void
     {
         parent::setUp();
-        $this->loadMigrationsFrom(__DIR__ . '../migrations');
-        $this->loadMigrationsFrom(dirname(__DIR__) . '../migrations');
+        $this->loadMigrationsFrom([
+            '--path' => realpath(__DIR__.'/../database/migrations'),
+        ]);
     }
 
 }
