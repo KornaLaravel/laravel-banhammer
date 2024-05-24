@@ -56,5 +56,9 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-progress
 
+      - name: Publish migrations
+        run: |
+          php artisan vendor:publish --provider="Mchev\Banhammer\BanhammerServiceProvider" --tag="banhammer-migrations" --force
+
       - name: Execute tests
         run: vendor/bin/phpunit
