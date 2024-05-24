@@ -14,7 +14,7 @@ Banned models can have an expiration date and will be automatically unbanned usi
 2. [Version Compatibility](#version-compatibility)
 3. [Installation](#installation)
 4. [Usage](#usage)
-   - [Making a Model Bannable](#to-make-a-model-bannable-add-the-mchevbanhammertraitsbannable-trait-to-the-model)
+   - [Making a Model Bannable](#usage)
    - [Ban / Unban](#ban--unban)
    - [IP](#ip)
    - [Metas](#metas)
