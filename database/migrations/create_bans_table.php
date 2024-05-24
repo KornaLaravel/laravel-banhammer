@@ -20,7 +20,6 @@ return new class extends Migration
             $table->timestamp('expired_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
             $table->index('ip');
             $table->index('expired_at');
         });

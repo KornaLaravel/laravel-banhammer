@@ -11,7 +11,6 @@ use Mchev\Banhammer\Middleware\AuthBanned;
 use Mchev\Banhammer\Middleware\BlockByCountry;
 use Mchev\Banhammer\Middleware\IPBanned;
 use Mchev\Banhammer\Middleware\LogoutBanned;
-use Mchev\Banhammer\Models\Ban;
 use Mchev\Banhammer\Observers\BanObserver;
 
 class BanhammerServiceProvider extends ServiceProvider
@@ -21,9 +20,7 @@ class BanhammerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        Ban::observe(BanObserver::class);
+        config('ban.model')::observe(BanObserver::class);
 
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('auth.banned', AuthBanned::class);
@@ -38,12 +35,12 @@ class BanhammerServiceProvider extends ServiceProvider
             // Publishing the config.
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('ban.php'),
-            ], 'banhammer-config');
+            ], 'config');
 
             // Publishing migrations
-            // $this->publishes([
-            //     __DIR__.'/../database/migrations' => database_path('migrations'),
-            // ], 'banhammer-migrations');
+            $this->publishes([
+                __DIR__.'/../database/migrations' => database_path('migrations'),
+            ], 'migrations');
 
             // Registering package commands.
             $this->commands([

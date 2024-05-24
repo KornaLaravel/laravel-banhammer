@@ -13,7 +13,7 @@ trait Bannable
      */
     public function bans(): MorphMany
     {
-        return $this->morphMany(Ban::class, 'bannable');
+        return $this->morphMany(config('ban.model'), 'bannable');
     }
 
     /**

@@ -21,4 +21,10 @@ abstract class TestCase extends Orchestra
             'Mchev\Banhammer\BanhammerServiceProvider',
         ];
     }
+
+    protected function defineDatabaseMigrations()
+    {
+        // $this->loadLaravelMigrations();
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+    }
 }
