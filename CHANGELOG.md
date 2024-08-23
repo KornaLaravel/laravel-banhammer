@@ -2,6 +2,10 @@
 
 All notable changes to `banhammer` will be documented in this file.
 
+## v2.3.1 - 2024-08-23
+
+- PR #15 Fix the return type for the fallback_url. Thanks to @dannydinges
+
 ## v2.3.0 - 2024-05-24
 
 - Added UUID support @KieranLProctor
@@ -18,6 +22,7 @@ All notable changes to `banhammer` will be documented in this file.
 
 ```
 IP::ban("8.8.8.8", [], now()->addMinutes(10));
+
 
 
 ```
