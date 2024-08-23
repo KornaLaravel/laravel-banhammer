@@ -3,6 +3,7 @@
 namespace Mchev\Banhammer\Exceptions;
 
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -26,7 +27,7 @@ class BanhammerException extends HttpException
     /**
      * Render the exception into an HTTP response.
      */
-    public function render(Request $request): Response
+    public function render(Request $request): Response|RedirectResponse
     {
         return (config('ban.fallback_url'))
             ? redirect(config('ban.fallback_url'))
