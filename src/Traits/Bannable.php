@@ -63,11 +63,11 @@ trait Bannable
     /**
      * Scope a query to include only models that are currently banned.
      */
-    public function scopeBanned(Builder $query): void
+    public function scopeBanned(Builder $query, bool $banned = true): void
     {
-        $query->whereHas('bans', function ($query) {
-            $query->notExpired();
-        });
+        $banned
+            ? $query->whereHas('bans', fn ($query) => $query->notExpired())
+            : $this->scopeNotBanned($query);
     }
 
     /**
