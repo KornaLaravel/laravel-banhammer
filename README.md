@@ -146,7 +146,10 @@ $bannedTeams = Team::banned()->get();
 $notBannedTeams = Team::notBanned()->get();
 ```
 
+> Alternatively to `notBanned()` you may also use the `banned()` scope to filter not-banned models: `Team::banned(false)`. Like this, you could simply use the `banned` scope for e.g. [spatie/laravel-query-builder](https://spatie.be/docs/laravel-query-builder/v5/features/filtering#content-scope-filters) [Scope Filters](https://spatie.be/docs/laravel-query-builder/v5/features/filtering#content-scope-filters), instead of using more complex ways to apply either `banned` or `notBanned` scopes.
+
 Unban
+
 ```php
 $user->unban();
 ```
