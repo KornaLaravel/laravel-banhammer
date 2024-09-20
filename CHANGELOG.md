@@ -2,6 +2,10 @@
 
 All notable changes to `banhammer` will be documented in this file.
 
+## v2.3.2 - 2024-09-20
+
+- The banned scope now accepts a boolean parameter to retrieve unbanned models as well, e.g., `Model::banned(false)`. Big thanks to @onlime for the contribution!
+
 ## v2.3.1 - 2024-08-23
 
 - PR #15 Fix the return type for the fallback_url. Thanks to @dannydinges
@@ -22,6 +26,7 @@ All notable changes to `banhammer` will be documented in this file.
 
 ```
 IP::ban("8.8.8.8", [], now()->addMinutes(10));
+
 
 
 
